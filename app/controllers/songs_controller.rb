@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 class SongsController < ApplicationController
   def index
+    @songs = Song.all
   end
 
   def show
+    @song = Song.find(params[:id])
   end
 
-  def new
-  end
+  def new; end
 
   def create
     @song = Song.new(song_params)
@@ -37,7 +40,7 @@ class SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
-    flash[:notice] = "Song deleted."
+    flash[:notice] = 'Song deleted.'
     redirect_to songs_path
   end
 
@@ -47,4 +50,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title)
   end
 end
-
