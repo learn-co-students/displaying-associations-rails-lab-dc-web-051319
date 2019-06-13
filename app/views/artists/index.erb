@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <% @artists.each do |artist| %>
+    <%= link_to artist.name, artist_path(artist) %>
+
+    (<%= artist.song_count %> <%= "song".pluralize(artist.song_count) %>)
+        <% end %>
+  </body>
+</html>
